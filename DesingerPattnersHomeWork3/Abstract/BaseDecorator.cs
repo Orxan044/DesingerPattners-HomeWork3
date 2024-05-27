@@ -1,9 +1,10 @@
 ﻿namespace DesingerPattnersHomeWork3.Abstract;
-using DesingerPattnersHomeWork3.Notifier;
-
-public abstract class BaseDecorator
+internal abstract class BaseDecorator : Notifier
 {
-    private Notifier? wrappee;
+    protected Notifier? notifier;
 
-    public abstract void Send(string Message);
+    protected BaseDecorator(Notifier? notifier = null)
+    {
+        this.notifier = notifier;
+    }
 }

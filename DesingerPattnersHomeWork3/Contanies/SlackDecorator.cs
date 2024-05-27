@@ -2,13 +2,12 @@
 
 namespace DesingerPattnersHomeWork3.Contanies;
 
-public class SlackDecorator : BaseDecorator
+internal class SlackDecorator(Notifier? notifier = null) : BaseDecorator(notifier)
 {
-    private BaseDecorator baseDecorator;
-    public SlackDecorator(BaseDecorator? baseDecorator) 
+    public override void Send(string message)
     {
-        this.baseDecorator = baseDecorator!;
+        notifier?.Send(message);
+        Console.WriteLine($"Slack: {message}");
     }
-
-    public override void Send(string Message) { Console.WriteLine($"Slack Decorator -> {Message}"); }
 }
+

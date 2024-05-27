@@ -2,16 +2,11 @@
 
 namespace DesingerPattnersHomeWork3.Contanies;
 
-public class SmsDecorator : BaseDecorator
+internal class SmsDecorator(Notifier? notifier = null) : BaseDecorator(notifier)
 {
-    private BaseDecorator baseDecorator;
-
-    public SmsDecorator(BaseDecorator? baseDecorator)
+    public override void Send(string message)
     {
-        this.baseDecorator = baseDecorator!;
+        notifier?.Send(message);
+        Console.WriteLine($"Sms: {message}");
     }
-
-
-
-    public override void Send(string? Message) { Console.WriteLine($"Sms Decorator -> {Message}"); }
 }

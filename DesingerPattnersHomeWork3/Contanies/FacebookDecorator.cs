@@ -2,14 +2,11 @@
 
 namespace DesingerPattnersHomeWork3.Contanies;
 
-public class FacebookDecorator : BaseDecorator
+internal class FacebookDecorator(Notifier? notifier = null) : BaseDecorator(notifier)
 {
-    private BaseDecorator baseDecorator;
-
-    public FacebookDecorator(BaseDecorator? baseDecorator)
+    public override void Send(string message)
     {
-        this.baseDecorator = baseDecorator!;
+        notifier?.Send(message);
+        Console.WriteLine($"Facebook: {message}");
     }
-
-    public override void Send(string Message) { Console.WriteLine($"Facebook Decorator -> {Message}"); }
 }
